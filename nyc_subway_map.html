@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_90953f97540b02eb58c03b3f0f7e22bd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_90953f97540b02eb58c03b3f0f7e22bd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_90953f97540b02eb58c03b3f0f7e22bd = L.map(
+                "map_90953f97540b02eb58c03b3f0f7e22bd",
+                {
+                    center: [40.712776, -74.005974],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_aa3b676de8775240f37aba89659953cb = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_aa3b676de8775240f37aba89659953cb.addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+            var circle_marker_160a51417cddb3e43f4cbb410979467b = L.circleMarker(
+                [40.75529, -73.987495],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+        var popup_8417a25666d155e390dd93b9637ce4f8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4a6729428b5c1322ac9ea0cced795b45 = $(`<div id="html_4a6729428b5c1322ac9ea0cced795b45" style="width: 100.0%; height: 100.0%;">Times Square - 42nd Street</div>`)[0];
+                popup_8417a25666d155e390dd93b9637ce4f8.setContent(html_4a6729428b5c1322ac9ea0cced795b45);
+            
+        
+
+        circle_marker_160a51417cddb3e43f4cbb410979467b.bindPopup(popup_8417a25666d155e390dd93b9637ce4f8)
+        ;
+
+        
+    
+    
+            var marker_29aa1a2c791f78784bb455a43ab7638d = L.marker(
+                [40.75529, -73.987495],
+                {}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+            var div_icon_3f622e2cfd695b29a0aa4fba95ea7a53 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 12pt; color : white\"\u003eA\u003c/div\u003e", "iconAnchor": [7, 7], "iconSize": [150, 36]});
+            marker_29aa1a2c791f78784bb455a43ab7638d.setIcon(div_icon_3f622e2cfd695b29a0aa4fba95ea7a53);
+        
+    
+            var circle_marker_5e804beee66f5dc243b55abd0e3c6037 = L.circleMarker(
+                [40.751776, -73.976848],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+        var popup_d492d7105446dd4ab5e0845692be0eaa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_843fc2c206117150e573d15347de00cd = $(`<div id="html_843fc2c206117150e573d15347de00cd" style="width: 100.0%; height: 100.0%;">Grand Central - 42nd Street</div>`)[0];
+                popup_d492d7105446dd4ab5e0845692be0eaa.setContent(html_843fc2c206117150e573d15347de00cd);
+            
+        
+
+        circle_marker_5e804beee66f5dc243b55abd0e3c6037.bindPopup(popup_d492d7105446dd4ab5e0845692be0eaa)
+        ;
+
+        
+    
+    
+            var marker_093e95dfbcea763f09f2d4803bd107cb = L.marker(
+                [40.751776, -73.976848],
+                {}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+            var div_icon_749baf13f8f9cfe799c49b785fd1b05e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 12pt; color : white\"\u003eA\u003c/div\u003e", "iconAnchor": [7, 7], "iconSize": [150, 36]});
+            marker_093e95dfbcea763f09f2d4803bd107cb.setIcon(div_icon_749baf13f8f9cfe799c49b785fd1b05e);
+        
+    
+            var circle_marker_cf37b871483df95ebcbcd3c9b974e81c = L.circleMarker(
+                [40.749567, -73.98795],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+        var popup_b1ab70c6ad279c7eca4714a4c3ae0d03 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_076c4f832151ea3fc3b05f8bc5466e02 = $(`<div id="html_076c4f832151ea3fc3b05f8bc5466e02" style="width: 100.0%; height: 100.0%;">34th Street - Herald Square</div>`)[0];
+                popup_b1ab70c6ad279c7eca4714a4c3ae0d03.setContent(html_076c4f832151ea3fc3b05f8bc5466e02);
+            
+        
+
+        circle_marker_cf37b871483df95ebcbcd3c9b974e81c.bindPopup(popup_b1ab70c6ad279c7eca4714a4c3ae0d03)
+        ;
+
+        
+    
+    
+            var marker_3c148d8fe08ef91f967fec83d4b489e2 = L.marker(
+                [40.749567, -73.98795],
+                {}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+            var div_icon_2063a9cee6e40c0c468c44405e9304e5 = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 12pt; color : white\"\u003eA\u003c/div\u003e", "iconAnchor": [7, 7], "iconSize": [150, 36]});
+            marker_3c148d8fe08ef91f967fec83d4b489e2.setIcon(div_icon_2063a9cee6e40c0c468c44405e9304e5);
+        
+    
+            var circle_marker_dec9566e1fa87d2a34109a55e1cbea97 = L.circleMarker(
+                [40.734673, -73.989951],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+        var popup_300f1b65b48cea5afe3b4b74d406b833 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b87568dd3dcf76543d7efd3926882d4f = $(`<div id="html_b87568dd3dcf76543d7efd3926882d4f" style="width: 100.0%; height: 100.0%;">14th Street - Union Square</div>`)[0];
+                popup_300f1b65b48cea5afe3b4b74d406b833.setContent(html_b87568dd3dcf76543d7efd3926882d4f);
+            
+        
+
+        circle_marker_dec9566e1fa87d2a34109a55e1cbea97.bindPopup(popup_300f1b65b48cea5afe3b4b74d406b833)
+        ;
+
+        
+    
+    
+            var marker_839d07594fa268100cffa6d90083240c = L.marker(
+                [40.734673, -73.989951],
+                {}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+            var div_icon_f7bf9da4934bbc542aeae0158de76f1e = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 12pt; color : white\"\u003eA\u003c/div\u003e", "iconAnchor": [7, 7], "iconSize": [150, 36]});
+            marker_839d07594fa268100cffa6d90083240c.setIcon(div_icon_f7bf9da4934bbc542aeae0158de76f1e);
+        
+    
+            var circle_marker_3b4d4387ee93c833f79fd2fb430d015d = L.circleMarker(
+                [40.709416, -74.010994],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+        var popup_c99a5c51f175bec1d18e3325fe13379f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0a184f02aa1a7f226140296aac1f980a = $(`<div id="html_0a184f02aa1a7f226140296aac1f980a" style="width: 100.0%; height: 100.0%;">Fulton Street</div>`)[0];
+                popup_c99a5c51f175bec1d18e3325fe13379f.setContent(html_0a184f02aa1a7f226140296aac1f980a);
+            
+        
+
+        circle_marker_3b4d4387ee93c833f79fd2fb430d015d.bindPopup(popup_c99a5c51f175bec1d18e3325fe13379f)
+        ;
+
+        
+    
+    
+            var marker_2b4875d1035f524c8c26c9340ccc9984 = L.marker(
+                [40.709416, -74.010994],
+                {}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+    
+            var div_icon_816aa483ba5430ac1831f9bda0586f6f = L.divIcon({"className": "empty", "html": "\u003cdiv style=\"font-size: 12pt; color : white\"\u003eA\u003c/div\u003e", "iconAnchor": [7, 7], "iconSize": [150, 36]});
+            marker_2b4875d1035f524c8c26c9340ccc9984.setIcon(div_icon_816aa483ba5430ac1831f9bda0586f6f);
+        
+    
+            var poly_line_1ec6b32c175f59e88765cbce86d7f85e = L.polyline(
+                [[40.75529, -73.987495], [40.751776, -73.976848], [40.749567, -73.98795], [40.734673, -73.989951], [40.709416, -74.010994]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_90953f97540b02eb58c03b3f0f7e22bd);
+        
+</script>
+</html>

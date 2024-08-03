@@ -294,7 +294,7 @@ stop_lookup = {x: [(y, z), n] for (x, y, z, n) in zip(*stop_lookup.values())}
 
 # %%
 def stop_lookup_f(stop, return_data):
-    if stop in ("R60", "R65", "X22"):
+    if stop in ("R60", "R65", "X22", 'M07'):
         return None
     else:
         try:
@@ -520,10 +520,11 @@ def route_to_shape(trip_id):
         if not train_route.is_empty():
             return train_route, shape[0]
     simple_shape = simple_route_to_shape.match(trip_id).groups(1)[0]
+    simple_shape_x = str(simple_shape).replace('X', '')
     partial_shape = [
         x
         for x in shapes_final["shape_id"].unique().to_list()
-        if re.search(rf".*{simple_shape}.*", x)
+        if re.search(rf".*({simple_shape}|{simple_shape_x}).*", x)
     ][0]
     train_route = shapes_final.filter(pl.col("shape_id") == partial_shape)
     return train_route, partial_shape[0]
