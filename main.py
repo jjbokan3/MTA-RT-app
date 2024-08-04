@@ -6,6 +6,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output, State
 import json
 from cleaning import shapes_stops_colors
+import re
 
 
 # Function to generate the initial figure
@@ -16,12 +17,12 @@ def load_initial_figure(filename):
 
 
 # Callback function to update the map
-def update_map_callback(n, fig_json, trains_tracked, last_updated, problems_log, stop_schedule):
+def update_map_callback(n, fig_json, trains_tracked, last_updated, problems_log, stop_schedule, shapes_stops, color_lookup, stop_lookup):
     fig = go.Figure(fig_json)
     initialize_train_table(trains_tracked, last_updated, problems_log)
     print("Initialize Done")
-    plot_trains(fig, trains_tracked)
-    stop_info_plotting(fig, trains_tracked, stop_schedule)
+    plot_trains(fig, trains_tracked, shapes_stops, color_lookup, stop_lookup)
+    stop_info_plotting(fig, trains_tracked, stop_schedule, stop_lookup)
     return fig
 
 
@@ -45,13 +46,15 @@ def main():
         ]
     )
 
+    shapes_stops, stop_lookup, color_lookup, stops_colors = shapes_stops_colors()
+
     # Initialize state variables
     trains_tracked = {}
     problems_log = {}
     stop_schedule = {stop_id: [] for stop_id in list(stop_lookup.keys())}
     last_updated = {"last_updated": None}
 
-    shapes_stops, stop_lookup, color_lookup = shapes_stops_colors()
+    # trains_tracked = initialize_train_table(trains_tracked, last_updated, problems_log)
 
     # Define callback
     @app.callback(
@@ -59,10 +62,10 @@ def main():
         [Input("interval-component", "n_intervals")]
     )
     def update_map(n):
-        return update_map_callback(n, fig_json, trains_tracked, last_updated, problems_log, stop_schedule)
+        return update_map_callback(n, fig_json, trains_tracked, last_updated, problems_log, stop_schedule, shapes_stops, color_lookup, stop_lookup)
 
     # Run the app
-    app.run_server(debug=True)
+    app.run_server()
 
 if __name__ == "__main__":
     main()

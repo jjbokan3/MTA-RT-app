@@ -51,6 +51,8 @@ def stop_direction_removal(stops):
 
     stops = stops.filter(~stops["stop_id"].str.contains(stop_removal_re))
 
+    return stops
+
 
 # %%
 
@@ -116,26 +118,26 @@ def shapes_stops_colors():
     colors, color_lookup = color_file()
     shapes = shapes_file()
     stops, stop_lookup = stops_file()
-    # stops_clean = (
-    #     stops.join(colors, left_on="Line", right_on="Service", how="left")
-    #     .with_columns(pl.col("Hex color").fill_null("#858585"))
-    #     .select(
-    #         [
-    #             "stop_name",
-    #             "stop_id",
-    #             "stop_lat",
-    #             "stop_lon",
-    #             "Line",
-    #             "Order",
-    #             "Hex color",
-    #         ]
-    #     )
-    # )
-    shapes_stops_colors = shapes.join(
-        stops_clean.select(["stop_lon", "stop_lat", "stop_name", "stop_id"]),
+    stops_colors = (
+        stops.join(colors, left_on="Line", right_on="Service", how="left")
+        .with_columns(pl.col("Hex color").fill_null("#858585"))
+        .select(
+            [
+                "stop_name",
+                "stop_id",
+                "stop_lat",
+                "stop_lon",
+                "Line",
+                "Order",
+                "Hex color",
+            ]
+        )
+    )
+    shapes_stops = shapes.join(
+        stops.select(["stop_lon", "stop_lat", "stop_name", "stop_id"]),
         left_on=("shape_pt_lon", "shape_pt_lat"),
         right_on=("stop_lon", "stop_lat"),
         how="left",
     )
 
-    return shapes_stops_colors, stop_lookup, color_lookup
+    return shapes_stops, stop_lookup, color_lookup, stops_colors

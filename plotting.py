@@ -4,18 +4,19 @@ from cleaning import stop_lookup_f
 from math_calculations import calculate_position, calculate_distance_within_line
 import plotly.graph_objects as go
 
+from stop_schedule import stop_strings_creation, stop_schedule_creation
+
 
 def plot_map(
-    coordinates,
-    fig,
-    trip_id,
-    line,
-    color_lookup,
-    # hovertext,
-    marker_size=15,
-    marker_color="#03fca9",
+        coordinates,
+        fig,
+        trip_id,
+        line,
+        color_lookup,
+        # hovertext,
+        marker_size=15,
+        marker_color="#03fca9",
 ):
-
     fig.add_trace(
         go.Scattermapbox(
             mode="markers+text",
@@ -49,13 +50,13 @@ def plot_map(
     # )
 
 
-def route_to_shape(trip_id, shapes_stops_colors):
+def route_to_shape(trip_id, shapes_stops):
     # exact_route_to_shape = re.compile(r"^.*_(.*)$")
     route_to_shape = re.compile(r"^.*_(.*?)([RX]).*$")
     simple_route_to_shape = re.compile(r"^.*_(.*?\.{1,2}[NS]).*")
     shape = route_to_shape.search(trip_id)
     if shape:
-        train_route = shapes_stops_colors.filter(
+        train_route = shapes_stops.filter(
             pl.col("shape_id") == shape.groups(1)[0]
         )
         if not train_route.is_empty():
@@ -64,24 +65,24 @@ def route_to_shape(trip_id, shapes_stops_colors):
     simple_shape_x = str(simple_shape).replace("X", "")
     partial_shape = [
         x
-        for x in shapes_stops_colors["shape_id"].unique().to_list()
+        for x in shapes_stops["shape_id"].unique().to_list()
         if re.search(rf".*({simple_shape}|{simple_shape_x}).*", x)
     ][0]
-    train_route = shapes_stops_colors.filter(pl.col("shape_id") == partial_shape)
+    train_route = shapes_stops.filter(pl.col("shape_id") == partial_shape)
     return train_route, partial_shape[0]
 
 
 # %%
-def plot_trains(fig, trains_tracked):
+def plot_trains(fig, trains_tracked, shapes_stops, color_lookup, stop_lookup):
     for trip_id in trains_tracked.keys():
-        train_route, line = route_to_shape(trip_id)
+        train_route, line = route_to_shape(trip_id, shapes_stops)
         match trains_tracked[trip_id]["current_status"]:
 
             case 0:
                 incoming = True
             case 1:
                 if stop := stop_lookup_f(
-                    trains_tracked[trip_id]["current_station"], "coordinates"
+                        trains_tracked[trip_id]["current_station"], "coordinates", stop_lookup
                 ):
                     plot_map(stop, fig, trip_id, line, color_lookup)
                 continue
@@ -105,7 +106,7 @@ def plot_trains(fig, trains_tracked):
                 ),
             ]
         )[0, 0]
-        in_route = train_route[prev_stop : next_stop + 1]
+        in_route = train_route[prev_stop: next_stop + 1]
         result = in_route.group_by("Line", maintain_order=True).map_groups(
             calculate_distance_within_line
         )
@@ -123,7 +124,7 @@ def plot_trains(fig, trains_tracked):
         # break
 
 
-def stop_info_plotting(fig, trains_tracked, stop_schedule):
+def stop_info_plotting(fig, trains_tracked, stop_schedule, stop_lookup):
     stop_strings = stop_strings_creation(
         stop_schedule_creation(trains_tracked, stop_schedule)
     )
@@ -137,6 +138,6 @@ def stop_info_plotting(fig, trains_tracked, stop_schedule):
         if next_stop := trains_tracked[trip]["planned_next_station"]:
             fig.update_traces(
                 selector=dict(name=trip),
-                # TODOOOOOOO: None is not subscriptable, better account for stations that dont exist
-                hovertext=f"Next Stop: {stop_lookup_f(next_stop, 'name')}<br>Direction: {trains_tracked[trip]['current_direction']}<br>Trip: {trip}",
+                # TODOOOOOOO: None is not subscriptable, better account for stations that don't exist
+                hovertext=f"Next Stop: {stop_lookup_f(next_stop, 'name', stop_lookup)}<br>Direction: {trains_tracked[trip]['current_direction']}<br>Trip: {trip}",
             )
