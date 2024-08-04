@@ -31,7 +31,7 @@ def main():
     app = dash.Dash(__name__)
 
     # Load initial figure
-    fig_json = load_initial_figure("map_plot.json")
+    fig_json = load_initial_figure("map_plot_black.json")
     fig = go.Figure(fig_json)
 
     # Define layout
