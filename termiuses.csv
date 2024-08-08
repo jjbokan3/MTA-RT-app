@@ -1,0 +1,26 @@
+Line,Northern Terminus (Stop ID),Southern Terminus (Stop ID)
+1,101,142
+2,201,247
+3,301,257
+4,401,250
+5,501|204,247
+6,601,640
+7,726,701
+A,A02,A65|H15|H11
+B,D03,D43
+C,A09,A55
+D,D01,D43
+E,E01,G05|F01
+F,F01,D43
+G,G22,F27
+J,G05,M23
+L,L01,L29
+M,G08,M01
+N,R01,D43
+Q,Q05,D43
+R,G08,R45
+W,R01,R27
+Z,G05,M23
+S (42nd St Shuttle),902,901
+S (Rockaway Shuttle),H04,H15
+S (Franklin Ave Shuttle),S01,D26

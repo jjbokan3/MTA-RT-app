@@ -1,0 +1,14 @@
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated-button {
+    opacity: 0; /* Initial state hidden */
+    animation: fadeIn 2s forwards; /* Increase duration to 2 seconds */,
+    animation-delay: 0.5s;
+}
+
+/*.btn-1 { animation-delay: 0.5s; }*/
+/*.btn-2 { animation-delay: 0.5s; }*/
+/*.btn-3 { animation-delay: 0.5s; }*/
